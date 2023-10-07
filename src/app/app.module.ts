@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { GanttViewComponent } from 'src/gantt/components/gantt-view/gantt-view.component';
+import { GanttViewComponent } from './gantt/components/gantt-view/gantt-view.component';
 
 @NgModule({
   declarations: [AppComponent,GanttViewComponent],
