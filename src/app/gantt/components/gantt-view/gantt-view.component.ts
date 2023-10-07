@@ -8,6 +8,7 @@ import {
 
 import { gantt } from 'dhtmlx-gantt';
 import { AppService } from 'src/app/app.service';
+import { GanttCommunicatorService } from '../../service/gantt.communicator.service';
 @Component({
   selector: 'app-gantt-view',
   encapsulation: ViewEncapsulation.None,
@@ -20,20 +21,14 @@ export class GanttViewComponent implements OnInit {
   columns;
   ganttTaskList = [];
   ganttLinkList = [];
-  
-  constructor(private ganttViewService: AppService) {}
+
+  constructor(private ganttCommunicatorService: GanttCommunicatorService) { }
 
   ngOnInit() {
-    this.ganttViewService.fetchProjectData().subscribe((res) => {
-      this.setGanttData(res);
-    });
-  }
+    this.setConfigs();
 
-  setGanttData(projectData) {
-    gantt.config.date_format = '%Y-%m-%d %H:%i';
-    gantt.init(this.ganttContainer.nativeElement);
-    gantt.parse({ data: projectData.tasks, links: projectData.links });
-    gantt.config.columns = this.createColumns();
+    this.fetchProjects();
+    this.listenToProjectUpdates()
   }
 
   createColumns() {
@@ -71,5 +66,27 @@ export class GanttViewComponent implements OnInit {
     ];
 
     return columns;
+  }
+
+  setConfigs() {
+    gantt.config.date_format = '%Y-%m-%d %H:%i';
+    gantt.init(this.ganttContainer.nativeElement);
+    gantt.config.columns = this.createColumns();
+  }
+
+  updateProject(projectData) {
+    gantt.parse({ data: projectData.tasks, links: projectData.links });
+  }
+
+  listenToProjectUpdates() {
+    this.ganttCommunicatorService.listenToGanttData().subscribe({
+      next: data => {
+        this.updateProject(data);
+      }
+    })
+  }
+
+  fetchProjects() {
+    this.ganttCommunicatorService.fireForGanttData();
   }
 }
