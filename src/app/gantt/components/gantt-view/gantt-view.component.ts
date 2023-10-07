@@ -42,20 +42,12 @@ export class GanttViewComponent implements OnInit {
         uniqColId: 'add',
         name: 'add',
         width: 50,
-        sort: true,
-        handleBeforeSort: () => {},
-        handleOnSort: (col) => {},
         align: 'left',
       },
       {
         uniqColId: 'project',
         name: 'text',
-        handleBeforeSort: () => {},
-        handleOnSort: (sortType, colDetail) => {},
-        label: `<span data-project-col class="column">
-            Add
-          </span>
-          </div>`,
+        label: 'Add',
         sort: true,
         width: 250,
         tree: true,
@@ -63,14 +55,7 @@ export class GanttViewComponent implements OnInit {
       {
         uniqColId: 'start_date',
         name: 'start_date',
-        get label() {
-          return `
-          <div>
-            <span data-${this.uniqColId}-col class="column">
-              Start Date
-            </span>
-          </div>`;
-        },
+       label : 'Start Date',
         width: 250,
         sort: true,
         align: 'center',
@@ -78,16 +63,9 @@ export class GanttViewComponent implements OnInit {
       {
         uniqColId: 'duration',
         name: 'duration',
-        get label() {
-          return `
-          <div>
-          <span data-${this.uniqColId}-col class="column">
-            Duration
-          </span>
-        </div>`;
-        },
+        label : 'Duration',
         width: 60,
-        sort: false,
+        sort: true,
         align: 'center',
       },
     ];
