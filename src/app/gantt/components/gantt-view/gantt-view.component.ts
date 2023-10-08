@@ -9,6 +9,8 @@ import {
 import { gantt } from 'dhtmlx-gantt';
 import { AppService } from 'src/app/app.service';
 import { GanttCommunicatorService } from '../../service/gantt.communicator.service';
+import { isChildTask } from './utils/gantt.util';
+
 @Component({
   selector: 'app-gantt-view',
   encapsulation: ViewEncapsulation.None,
@@ -72,6 +74,10 @@ export class GanttViewComponent implements OnInit {
     gantt.config.date_format = '%Y-%m-%d %H:%i';
     gantt.init(this.ganttContainer.nativeElement);
     gantt.config.columns = this.createColumns();
+
+    gantt.templates.task_class = function(start, end, task){
+      return isChildTask(task) ? 'child-task': 'parent-task'
+    };
   }
 
   updateProject(projectData) {

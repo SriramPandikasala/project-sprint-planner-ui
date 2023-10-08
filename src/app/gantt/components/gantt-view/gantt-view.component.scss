@@ -1,6 +1,23 @@
 @import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 .gantt-chart {
   position: relative;
-  width: 100%;
+  padding:10px;
+  width: calc(100% - 30px);
   height: 600px;
+
+  .gantt_container {
+    border-radius: 10px;
+    box-shadow: 0 0 7px -2px #ccc;
+
+  }
+
+  .parent-task {
+    background-color: #00910080;
+    border: 1px solid;
+
+    .gantt_task_content {
+      color: black
+    }
+  }
+
 }
