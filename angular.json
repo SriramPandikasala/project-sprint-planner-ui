@@ -46,7 +46,7 @@
             "main": "src/main.ts",
             "outputPath": "dist/project-sprint-planner-ui",
             "scripts": [],
-            "styles": ["src/global_styles.css"],
+            "styles": ["src/global_styles.scss"],
             "tsConfig": "tsconfig.app.json"
           }
         },
