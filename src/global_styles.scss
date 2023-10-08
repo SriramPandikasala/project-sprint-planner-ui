@@ -1,2 +1,10 @@
 /* Add application styles & imports to this file! */
-@import 'src/assets/styles/_css-reset.scss';
+
+// Check stylePreprocessorOptions in angular.json
+@import '_css-reset';
+@import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
+
+body {
+  background-color: #eeeeee80;
+  font-family: sans-serif;
+}
