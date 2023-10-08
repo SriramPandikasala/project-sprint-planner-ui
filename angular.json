@@ -41,12 +41,18 @@
             }
           },
           "options": {
-            "assets": [],
+            "assets": ["src/assets"],
+            "allowedCommonJsDependencies": [
+              "dhtmlx-gantt"
+            ],
             "index": "src/index.html",
             "main": "src/main.ts",
             "outputPath": "dist/project-sprint-planner-ui",
             "scripts": [],
-            "styles": ["src/global_styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/assets/styles"]
+            },
+            "styles": ["src/assets/styles/_css-reset.scss","src/global_styles.scss" ],
             "tsConfig": "tsconfig.app.json"
           }
         },
@@ -83,7 +89,7 @@
             "main": "src/test.ts",
             "polyfills": [],
             "scripts": [],
-            "styles": ["styles.css"],
+            "styles": ["src/global_styles.scss", "src/assets/styles/css-reset.scss"],
             "tsConfig": "tsconfig.spec.json"
           }
         }
