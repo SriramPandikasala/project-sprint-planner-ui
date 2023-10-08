@@ -80,14 +80,14 @@ export class GanttViewComponent implements OnInit {
     };
   }
 
-  updateProject(projectData) {
+  updateGanttView(projectData) {
     gantt.parse({ data: projectData.tasks, links: projectData.links });
   }
 
   listenToProjectUpdates() {
     this.ganttCommunicatorService.listenToGanttData().subscribe({
       next: data => {
-        this.updateProject(data);
+        this.updateGanttView(data);
       }
     })
   }
